@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import App from './App.jsx'
 import './styles/tailwind.css'
 
-// BASE_URL is '/' in dev and '/AAM-tech-Portfolio/' on GitHub Pages
+// BASE_URL is '/' in dev and '/portfolio/' on GitHub Pages
 const basename = import.meta.env.BASE_URL.replace(/\/$/, '') || '/'
 
 const root = document.getElementById('root')

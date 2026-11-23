@@ -1,6 +1,6 @@
 // All site content lives here — edit this file to update the portfolio.
 
-// Files in /public live under the site's base path ('/AAM-tech-Portfolio/' on GitHub Pages)
+// Files in /public live under the site's base path ('/portfolio/' on GitHub Pages)
 export const asset = (path) => import.meta.env.BASE_URL + path.replace(/^\//, '')
 
 export const company = {

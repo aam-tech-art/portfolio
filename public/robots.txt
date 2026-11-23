@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://muhammad-mubashir-awan.github.io/AAM-tech-Portfolio/sitemap.xml
+Sitemap: https://aam-tech-art.github.io/portfolio/sitemap.xml
