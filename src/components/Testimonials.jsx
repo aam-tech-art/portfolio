@@ -58,7 +58,7 @@ export default function Testimonials() {
           {googleReviews.rating} on Google · {googleReviews.count} reviews
         </a>
         <div className="group/reviews -mx-4 overflow-hidden py-2 [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]">
-          <div className="flex w-max [animation:review-marquee_55s_linear_infinite] group-hover/reviews:[animation-duration:130s] motion-reduce:animate-none">
+          <div className="flex w-max [animation:review-marquee_55s_linear_infinite] group-hover/reviews:[animation-play-state:paused] motion-reduce:animate-none">
             {[false, true].map((clone) => (
               <div key={String(clone)} aria-hidden={clone || undefined} className="flex shrink-0 gap-5 pr-5">
                 {items.map((review, index) => <ReviewCard key={`${clone}-${review.name}-${index}`} review={review} onReadMore={setSelectedReview} clone={clone} />)}
