@@ -21,7 +21,7 @@ const countWords = (text) => text.split(/\s+/).filter((w) => /[\p{L}\p{N}]/u.tes
 
 // Also used by the quick quote bar under the home hero (QuickQuote.jsx)
 export const NEEDS = [...services.map((s) => s.title), 'Not sure yet']
-export const BUDGETS = ['Rs 60k – 100k', 'Rs 100k – 250k', 'Rs 250k+', 'Not sure yet']
+export const BUDGETS = ['Rs 80k – 200k', 'Rs 200k – 400k', 'Rs 400k+', 'Not sure yet']
 export const TIMELINES = ['Under 1 month', '1 – 2 months', '3+ months', 'Flexible']
 const CONTACT_WAYS = ['Email', 'WhatsApp', 'Phone call']
 

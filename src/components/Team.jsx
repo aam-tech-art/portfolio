@@ -43,7 +43,7 @@ export default function Team() {
                         height={750}
                         loading={i === 0 ? 'eager' : 'lazy'}
                         decoding="async"
-                        alt={m.name}
+                        alt={m.name || m.role || 'AAM Technology team member'}
                         className={cn('block aspect-[4/5] w-full object-cover object-[center_25%]', zoomOnHover)}
                       />
                     </div>
@@ -53,7 +53,7 @@ export default function Team() {
                     {initials(m.name)}
                   </div>
                 )}
-                <h3 className="mb-2 text-[1.3rem]">{m.name}</h3>
+                {m.name && <h3 className="mb-2 text-[1.3rem]">{m.name}</h3>}
                 {m.role && <p className="mb-3 text-[0.9rem] font-semibold text-pine-600">{m.role}</p>}
                 {m.bio && <p className="mb-0 text-[0.98rem] leading-relaxed">{m.bio}</p>}
               </article>

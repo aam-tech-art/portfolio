@@ -21,7 +21,7 @@ export const pages = {
   },
   pricing: {
     name: 'Pricing',
-    description: 'Simple website packages with honest prices: Starter from Rs 30k, Business from Rs 100k and Pro from Rs 250k, plus answers to common questions.',
+    description: 'Simple website packages with honest prices: Starter from Rs 80k, Business from Rs 200k and Pro from Rs 400k, plus answers to common questions.',
   },
   about: {
     name: 'About Us',

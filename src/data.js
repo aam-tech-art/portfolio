@@ -118,6 +118,14 @@ export const processSteps = [
 // `link` is the live website (https://…). Leave it empty and "View project" is hidden.
 export const projects = [
   {
+    title: 'Dialwise',
+    category: 'AI calling platform',
+    text: 'A polished demo experience for a modern AI-powered calling platform.',
+    tags: ['Web app', 'AI', 'Product demo'],
+    gradient: 'linear-gradient(135deg, #1d4ed8, #7c3aed)',
+    link: 'https://dialwise-beta.vercel.app/demo',
+  },
+  {
     title: 'Bloom Café',
     category: 'Restaurant website',
     text: 'A warm, mobile-first site with an online menu, table booking, and Google Maps integration.',
@@ -168,21 +176,27 @@ export const about = {
 
 // Photos live in the `public` folder, cropped to 4:5 (portrait): `photo` 600 px wide, and an
 // optional `photoLarge` 900 px wide for sharp high-resolution screens. The full-size originals
-// (mubashir.webp, abdal.webp) stay in `public` to make new crops from. `role` and `bio` are
-// optional and only shown when set.
+// (mubashir.webp, abdal.webp) stay in `public` to make new crops from. `name`, `role` and `bio`
+// are optional and only shown when set.
 export const team = [
-  // TODO: rewrite these placeholder descriptions in your own words
   {
     name: 'Muhammad Mubashir',
     photo: '/mubashir-600.webp',
     photoLarge: '/mubashir-900.webp',
-    bio: 'Part of the AAM Technology team, bringing creative ideas and clean code together to deliver standout digital experiences for clients worldwide.',
+    role: 'CTO — Technology and development',
+    bio: 'Leads the technology and development behind reliable, high-performing digital experiences.',
   },
   {
     name: 'Abdal Niazi',
     photo: '/abdal-600.webp',
     photoLarge: '/abdal-900.webp',
-    bio: 'Part of the AAM Technology team, focused on building reliable, well-crafted web experiences for clients around the world.',
+    role: 'CEO — Overall company management',
+    bio: 'Leads the company with a focus on clear direction, client success and exceptional delivery.',
+  },
+  {
+    photo: '/cmo.jpeg',
+    role: 'CMO — Complete marketing and brand growth',
+    bio: 'Drives marketing strategy and brand growth across AAM Technology.',
   },
 ]
 
@@ -232,25 +246,25 @@ export const testimonials = [
 export const pricing = [
   {
     name: 'Starter',
-    price: 'Rs 60k',
-    budget: 'Rs 60k – 100k',
+    price: 'Rs 80k',
+    budget: 'Rs 80k – 200k',
     text: 'A sharp one-page or small website to get your business online fast.',
-    features: ['Up to 5 pages', 'Mobile-first, responsive design', 'Contact form + WhatsApp button', 'Basic SEO setup', '1 round of revisions', '2–3 weeks delivery', '1 month support after launch'],
+    features: ['7–8 pages', 'Mobile-first, responsive design', 'Contact form + WhatsApp button', 'Basic SEO setup', '1 round of revisions', '2–3 weeks delivery', '1 month support after launch'],
     cta: 'Start with Starter',
   },
   {
-    name: 'Business',
-    price: 'Rs 100k',
-    budget: 'Rs 100k – 250k',
+    name: 'Advanced',
+    price: 'Rs 200k',
+    budget: 'Rs 200k – 400k',
     popular: true,
-    text: 'A complete website built to win customers, with the features growing businesses need.',
+    text: 'A complete website built to win customers, with the advanced features growing businesses need.',
     features: ['Up to 12 pages', 'Custom design & animations', 'Blog or content you can edit', 'SEO + Google Analytics', 'Speed optimisation', '2 months support after launch'],
-    cta: 'Choose Business',
+    cta: 'Choose Advanced',
   },
   {
     name: 'Pro',
-    price: 'Rs 250k',
-    budget: 'Rs 250k+',
+    price: 'Rs 400k',
+    budget: 'Rs 400k+',
     text: 'Online stores, web apps and systems tailored to how your business works.',
     features: ['E-commerce or custom web app', 'Payments, bookings or dashboards', 'Integrations with your tools', 'Advanced SEO & performance', '4 months support after launch', 'Timeline planned with you'],
     cta: 'Choose Pro',
