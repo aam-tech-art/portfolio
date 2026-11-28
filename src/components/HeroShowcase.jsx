@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { projects } from '../data.js'
 import { cn } from '@/lib/utils'
 
@@ -87,7 +87,17 @@ function DialwiseMiniSite({ compact = false, scrolled = false }) {
 
 export default function HeroShowcase() {
   const [main, second] = projects
+  const [isDesktop, setIsDesktop] = useState(false)
   const [phonePreviewScrolled, setPhonePreviewScrolled] = useState(false)
+
+  useEffect(() => {
+    const desktopQuery = window.matchMedia('(min-width: 640px)')
+    const updateDeviceMode = () => setIsDesktop(desktopQuery.matches)
+    updateDeviceMode()
+    desktopQuery.addEventListener('change', updateDeviceMode)
+    return () => desktopQuery.removeEventListener('change', updateDeviceMode)
+  }, [])
+
   const togglePhonePreview = () => setPhonePreviewScrolled((isScrolled) => !isScrolled)
   const handlePreviewKeyDown = (event) => {
     if (event.key === 'Enter' || event.key === ' ') {
@@ -102,17 +112,29 @@ export default function HeroShowcase() {
     >
       {/* Laptop: screen + base */}
       <div className="group/device absolute inset-[4%_0_10%_10%] sm:inset-[6%_2%_12%_17%]">
-        <a href={main.link} target="_blank" rel="noopener noreferrer" aria-label="Open the Dialwise CRM demo" className="absolute inset-[0_0_6%] cursor-pointer overflow-hidden rounded-[14px_14px_4px_4px] border-[7px] border-pine-800 bg-card text-left shadow-[0_30px_60px_-30px_rgba(5,31,32,0.55)] sm:border-[10px]">
-          {main.visual === 'dialwise' ? <DialwiseMiniSite /> : <MiniSite project={main} />}
-        </a>
+        {isDesktop ? (
+          <a href={main.link} target="_blank" rel="noopener noreferrer" aria-label="Open the Dialwise CRM demo" className="absolute inset-[0_0_6%] cursor-pointer overflow-hidden rounded-[14px_14px_4px_4px] border-[7px] border-pine-800 bg-card text-left shadow-[0_30px_60px_-30px_rgba(5,31,32,0.55)] sm:border-[10px]">
+            {main.visual === 'dialwise' ? <DialwiseMiniSite /> : <MiniSite project={main} />}
+          </a>
+        ) : (
+          <button type="button" onClick={togglePhonePreview} onKeyDown={handlePreviewKeyDown} aria-pressed={phonePreviewScrolled} aria-label="Scroll the Dialwise laptop preview" className="absolute inset-[0_0_6%] cursor-pointer overflow-hidden rounded-[14px_14px_4px_4px] border-[7px] border-pine-800 bg-card text-left shadow-[0_30px_60px_-30px_rgba(5,31,32,0.55)] sm:border-[10px]">
+            {main.visual === 'dialwise' ? <DialwiseMiniSite scrolled={phonePreviewScrolled} /> : <MiniSite project={main} scrolled={phonePreviewScrolled} />}
+          </button>
+        )}
         <div className="absolute -inset-x-[6%] bottom-0 h-[6%] rounded-[2px_2px_14px_14px] bg-linear-to-b from-primary to-pine-800" />
       </div>
 
       {/* Phone, floating gently in front of the laptop */}
       {second && (
-        <button type="button" onClick={togglePhonePreview} onKeyDown={handlePreviewKeyDown} aria-pressed={phonePreviewScrolled} aria-label="Scroll the Dialwise mobile preview" className="group/device absolute bottom-0 left-0 aspect-[9/18] w-[22%] animate-float-slow cursor-pointer overflow-hidden rounded-[14px] border-4 border-pine-800 bg-card text-left shadow-[0_24px_40px_-20px_rgba(5,31,32,0.55)] sm:w-[27%] sm:rounded-[18px] sm:border-[6px] motion-reduce:animate-none">
-          {main.visual === 'dialwise' ? <DialwiseMiniSite compact scrolled={phonePreviewScrolled} /> : <MiniSite project={second} compact scrolled={phonePreviewScrolled} />}
-        </button>
+        isDesktop ? (
+          <a href={main.link} target="_blank" rel="noopener noreferrer" aria-label="Open the Dialwise CRM demo" className="group/device absolute bottom-0 left-0 aspect-[9/18] w-[22%] animate-float-slow cursor-pointer overflow-hidden rounded-[14px] border-4 border-pine-800 bg-card text-left shadow-[0_24px_40px_-20px_rgba(5,31,32,0.55)] sm:w-[27%] sm:rounded-[18px] sm:border-[6px] motion-reduce:animate-none">
+            {main.visual === 'dialwise' ? <DialwiseMiniSite compact /> : <MiniSite project={second} compact />}
+          </a>
+        ) : (
+          <button type="button" onClick={togglePhonePreview} onKeyDown={handlePreviewKeyDown} aria-pressed={phonePreviewScrolled} aria-label="Scroll the Dialwise mobile preview" className="group/device absolute bottom-0 left-0 aspect-[9/18] w-[22%] animate-float-slow cursor-pointer overflow-hidden rounded-[14px] border-4 border-pine-800 bg-card text-left shadow-[0_24px_40px_-20px_rgba(5,31,32,0.55)] sm:w-[27%] sm:rounded-[18px] sm:border-[6px] motion-reduce:animate-none">
+            {main.visual === 'dialwise' ? <DialwiseMiniSite compact scrolled={phonePreviewScrolled} /> : <MiniSite project={second} compact scrolled={phonePreviewScrolled} />}
+          </button>
+        )
       )}
 
       {/* Floating badges (hidden on phones) */}
