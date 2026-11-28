@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { projects } from '../data.js'
 import { cn } from '@/lib/utils'
 
@@ -12,11 +13,11 @@ const BADGES = [
 
 // A tiny website, twice as tall as its screen. Hovering the device (group/device) scrolls
 // it slowly to the bottom, like someone browsing the site, and back up when the mouse leaves.
-function MiniSite({ project, compact = false }) {
+function MiniSite({ project, compact = false, scrolled = false }) {
   const block = 'block rounded-md border border-border'
   return (
     <div className="h-full overflow-hidden">
-      <div className="flex h-[200%] flex-col gap-[2%] px-[5%] py-[2.5%] transition-transform duration-[1.2s] ease-[cubic-bezier(0.45,0,0.25,1)] *:flex-none group-hover/device:-translate-y-1/2 group-hover/device:duration-[4s] motion-reduce:transition-none">
+      <div className={cn('flex h-[200%] flex-col gap-[2%] px-[5%] py-[2.5%] transition-transform duration-[1.2s] ease-[cubic-bezier(0.45,0,0.25,1)] *:flex-none group-hover/device:-translate-y-1/2 group-hover/device:duration-[4s] motion-reduce:transition-none', scrolled && '-translate-y-1/2 duration-[4s]')}>
         <div className="flex h-[4%] items-center justify-between">
           <span className="h-2 w-[18%] rounded bg-primary" />
           {!compact && (
@@ -54,11 +55,11 @@ function MiniSite({ project, compact = false }) {
   )
 }
 
-function DialwiseMiniSite({ compact = false }) {
+function DialwiseMiniSite({ compact = false, scrolled = false }) {
   if (compact) {
     return (
       <div className="h-full overflow-hidden bg-[#f5fffc] text-[#163832]">
-        <div className="flex h-[200%] flex-col gap-[3%] p-[7%] transition-transform duration-[1.2s] ease-[cubic-bezier(0.45,0,0.25,1)] *:flex-none group-hover/device:-translate-y-1/2 group-hover/device:duration-[4s] motion-reduce:transition-none">
+        <div className={cn('flex h-[200%] flex-col gap-[3%] p-[7%] transition-transform duration-[1.2s] ease-[cubic-bezier(0.45,0,0.25,1)] *:flex-none group-hover/device:-translate-y-1/2 group-hover/device:duration-[4s] motion-reduce:transition-none', scrolled && '-translate-y-1/2 duration-[4s]')}>
           <header className="flex h-[4%] items-center justify-between"><strong className="font-display text-[0.48rem] tracking-tight text-[#0f766e]">⌕ Dialwise</strong><i className="block h-1.5 w-5 rounded-full bg-[#d8eee9]" /></header>
           <section className="flex h-[25%] flex-col justify-center rounded-md border border-[#b8e4db] bg-white p-[8%] shadow-[0_5px_16px_rgba(15,118,110,0.09)]"><span className="text-[0.37rem] font-bold tracking-[0.1em] text-[#0f766e] uppercase">Cold-calling CRM</span><strong className="mt-[8%] font-display text-[0.63rem] leading-[1.1]">Every call, at the right time.</strong><span className="mt-[10%] w-fit rounded-full bg-[#14b8a6] px-[8%] py-[4%] text-[0.36rem] font-bold text-white">Open →</span></section>
           <section className="h-[25%] rounded-md border border-[#d8eee9] bg-white p-[7%]"><div className="mb-[9%] flex justify-between text-[0.42rem] font-bold"><span>Call queue</span><span className="text-[#0f766e]">View all</span></div>{['Ready now', 'Retry later', 'Follow-up'].map((item, index) => <div key={item} className="mb-[8%] flex items-center gap-[7%]"><i className={cn('block size-1.5 rounded-full', index === 0 ? 'bg-[#14b8a6]' : 'bg-[#cbe8e2]')} /><span className="text-[0.36rem] text-[#52736d]">{item}</span></div>)}</section>
@@ -72,7 +73,7 @@ function DialwiseMiniSite({ compact = false }) {
 
   return (
     <div className="h-full overflow-hidden bg-[#f5fffc] text-[#163832]">
-      <div className="flex h-[200%] flex-col gap-[3%] p-[5%] transition-transform duration-[1.2s] ease-[cubic-bezier(0.45,0,0.25,1)] *:flex-none group-hover/device:-translate-y-1/2 group-hover/device:duration-[4s] motion-reduce:transition-none">
+      <div className={cn('flex h-[200%] flex-col gap-[3%] p-[5%] transition-transform duration-[1.2s] ease-[cubic-bezier(0.45,0,0.25,1)] *:flex-none group-hover/device:-translate-y-1/2 group-hover/device:duration-[4s] motion-reduce:transition-none', scrolled && '-translate-y-1/2 duration-[4s]')}>
         <header className="flex h-[5%] items-center justify-between border-b border-[#d8eee9] pb-[2%]"><strong className="font-display text-[clamp(0.58rem,1.2vw,0.9rem)] tracking-tight text-[#0f766e]">⌕ Dialwise</strong><span className="rounded-full bg-[#d7f1eb] px-[4%] py-[1%] text-[0.5rem] font-bold tracking-wide text-[#0f766e]">CRM</span></header>
         <section className="flex h-[27%] flex-col justify-center rounded-lg border border-[#b8e4db] bg-white p-[7%] shadow-[0_8px_20px_rgba(15,118,110,0.08)]"><span className="text-[0.7rem] font-semibold tracking-[0.16em] text-[#0f766e] uppercase">Cold-calling CRM</span><strong className="mt-[5%] font-display text-[clamp(0.9rem,1.8vw,1.35rem)] leading-[0.98]">Call leads at the right time, every time.</strong><span className="mt-[7%] w-fit rounded-full bg-[#14b8a6] px-[7%] py-[3%] text-[0.62rem] font-bold text-white">Open workspace →</span></section>
         <section className="h-[22%] rounded-lg border border-[#d8eee9] bg-white p-[5%]"><div className="mb-[7%] flex justify-between"><strong className="text-[clamp(0.6rem,1.2vw,0.9rem)]">Call queue</strong><span className="text-[0.65rem] font-semibold text-[#0f766e]">View all</span></div>{['Ready for follow-up', 'Scheduled callback', 'New lead'].map((item, index) => <div key={item} className="mb-[4%] flex items-center gap-[4%]"><i className={cn('block size-[0.52rem] rounded-full', index === 0 ? 'bg-[#14b8a6]' : 'bg-[#cbe8e2]')} /><span className="text-[0.68rem] text-[#52736d]">{item}</span></div>)}</section>
@@ -86,23 +87,32 @@ function DialwiseMiniSite({ compact = false }) {
 
 export default function HeroShowcase() {
   const [main, second] = projects
+  const [previewScrolled, setPreviewScrolled] = useState(false)
+  const togglePreview = () => setPreviewScrolled((isScrolled) => !isScrolled)
+  const handlePreviewKeyDown = (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault()
+      togglePreview()
+    }
+  }
+
   return (
     <div
       className="relative aspect-[4/3] w-full justify-self-center sm:aspect-[5/4] sm:max-w-[520px] lg:max-w-[560px] lg:justify-self-end"
     >
       {/* Laptop: screen + base */}
       <div className="group/device absolute inset-[4%_0_10%_10%] sm:inset-[6%_2%_12%_17%]">
-        <a href={main.link} target="_blank" rel="noopener noreferrer" aria-label="Open the Dialwise CRM demo" className="absolute inset-[0_0_6%] overflow-hidden rounded-[14px_14px_4px_4px] border-[7px] border-pine-800 bg-card shadow-[0_30px_60px_-30px_rgba(5,31,32,0.55)] sm:border-[10px]">
-          {main.visual === 'dialwise' ? <DialwiseMiniSite /> : <MiniSite project={main} />}
-        </a>
+        <button type="button" onClick={togglePreview} onKeyDown={handlePreviewKeyDown} aria-pressed={previewScrolled} aria-label="Scroll the Dialwise preview" className="absolute inset-[0_0_6%] cursor-pointer overflow-hidden rounded-[14px_14px_4px_4px] border-[7px] border-pine-800 bg-card text-left shadow-[0_30px_60px_-30px_rgba(5,31,32,0.55)] sm:border-[10px]">
+          {main.visual === 'dialwise' ? <DialwiseMiniSite scrolled={previewScrolled} /> : <MiniSite project={main} scrolled={previewScrolled} />}
+        </button>
         <div className="absolute -inset-x-[6%] bottom-0 h-[6%] rounded-[2px_2px_14px_14px] bg-linear-to-b from-primary to-pine-800" />
       </div>
 
       {/* Phone, floating gently in front of the laptop */}
       {second && (
-        <a href={main.link} target="_blank" rel="noopener noreferrer" aria-label="Open the Dialwise CRM demo" className="group/device absolute bottom-0 left-0 aspect-[9/18] w-[22%] animate-float-slow overflow-hidden rounded-[14px] border-4 border-pine-800 bg-card shadow-[0_24px_40px_-20px_rgba(5,31,32,0.55)] sm:w-[27%] sm:rounded-[18px] sm:border-[6px] motion-reduce:animate-none">
-          {main.visual === 'dialwise' ? <DialwiseMiniSite compact /> : <MiniSite project={second} compact />}
-        </a>
+        <button type="button" onClick={togglePreview} onKeyDown={handlePreviewKeyDown} aria-pressed={previewScrolled} aria-label="Scroll the Dialwise mobile preview" className="group/device absolute bottom-0 left-0 aspect-[9/18] w-[22%] animate-float-slow cursor-pointer overflow-hidden rounded-[14px] border-4 border-pine-800 bg-card text-left shadow-[0_24px_40px_-20px_rgba(5,31,32,0.55)] sm:w-[27%] sm:rounded-[18px] sm:border-[6px] motion-reduce:animate-none">
+          {main.visual === 'dialwise' ? <DialwiseMiniSite compact scrolled={previewScrolled} /> : <MiniSite project={second} compact scrolled={previewScrolled} />}
+        </button>
       )}
 
       {/* Floating badges (hidden on phones) */}
