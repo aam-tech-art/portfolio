@@ -87,12 +87,12 @@ function DialwiseMiniSite({ compact = false, scrolled = false }) {
 
 export default function HeroShowcase() {
   const [main, second] = projects
-  const [previewScrolled, setPreviewScrolled] = useState(false)
-  const togglePreview = () => setPreviewScrolled((isScrolled) => !isScrolled)
+  const [phonePreviewScrolled, setPhonePreviewScrolled] = useState(false)
+  const togglePhonePreview = () => setPhonePreviewScrolled((isScrolled) => !isScrolled)
   const handlePreviewKeyDown = (event) => {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault()
-      togglePreview()
+      togglePhonePreview()
     }
   }
 
@@ -102,16 +102,16 @@ export default function HeroShowcase() {
     >
       {/* Laptop: screen + base */}
       <div className="group/device absolute inset-[4%_0_10%_10%] sm:inset-[6%_2%_12%_17%]">
-        <button type="button" onClick={togglePreview} onKeyDown={handlePreviewKeyDown} aria-pressed={previewScrolled} aria-label="Scroll the Dialwise preview" className="absolute inset-[0_0_6%] cursor-pointer overflow-hidden rounded-[14px_14px_4px_4px] border-[7px] border-pine-800 bg-card text-left shadow-[0_30px_60px_-30px_rgba(5,31,32,0.55)] sm:border-[10px]">
-          {main.visual === 'dialwise' ? <DialwiseMiniSite scrolled={previewScrolled} /> : <MiniSite project={main} scrolled={previewScrolled} />}
-        </button>
+        <a href={main.link} target="_blank" rel="noopener noreferrer" aria-label="Open the Dialwise CRM demo" className="absolute inset-[0_0_6%] cursor-pointer overflow-hidden rounded-[14px_14px_4px_4px] border-[7px] border-pine-800 bg-card text-left shadow-[0_30px_60px_-30px_rgba(5,31,32,0.55)] sm:border-[10px]">
+          {main.visual === 'dialwise' ? <DialwiseMiniSite /> : <MiniSite project={main} />}
+        </a>
         <div className="absolute -inset-x-[6%] bottom-0 h-[6%] rounded-[2px_2px_14px_14px] bg-linear-to-b from-primary to-pine-800" />
       </div>
 
       {/* Phone, floating gently in front of the laptop */}
       {second && (
-        <button type="button" onClick={togglePreview} onKeyDown={handlePreviewKeyDown} aria-pressed={previewScrolled} aria-label="Scroll the Dialwise mobile preview" className="group/device absolute bottom-0 left-0 aspect-[9/18] w-[22%] animate-float-slow cursor-pointer overflow-hidden rounded-[14px] border-4 border-pine-800 bg-card text-left shadow-[0_24px_40px_-20px_rgba(5,31,32,0.55)] sm:w-[27%] sm:rounded-[18px] sm:border-[6px] motion-reduce:animate-none">
-          {main.visual === 'dialwise' ? <DialwiseMiniSite compact scrolled={previewScrolled} /> : <MiniSite project={second} compact scrolled={previewScrolled} />}
+        <button type="button" onClick={togglePhonePreview} onKeyDown={handlePreviewKeyDown} aria-pressed={phonePreviewScrolled} aria-label="Scroll the Dialwise mobile preview" className="group/device absolute bottom-0 left-0 aspect-[9/18] w-[22%] animate-float-slow cursor-pointer overflow-hidden rounded-[14px] border-4 border-pine-800 bg-card text-left shadow-[0_24px_40px_-20px_rgba(5,31,32,0.55)] sm:w-[27%] sm:rounded-[18px] sm:border-[6px] motion-reduce:animate-none">
+          {main.visual === 'dialwise' ? <DialwiseMiniSite compact scrolled={phonePreviewScrolled} /> : <MiniSite project={second} compact scrolled={phonePreviewScrolled} />}
         </button>
       )}
 
