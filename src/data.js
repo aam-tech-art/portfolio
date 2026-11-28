@@ -235,7 +235,7 @@ export const pricing = [
     price: 'Rs 60k',
     budget: 'Rs 30k – 100k',
     text: 'A sharp one-page or small website to get your business online fast.',
-    features: ['Up to 5 pages', 'Mobile-first, responsive design', 'Contact form + WhatsApp button', 'Basic SEO setup', '1 round of revisions', '2–3 weeks delivery'],
+    features: ['Up to 5 pages', 'Mobile-first, responsive design', 'Contact form + WhatsApp button', 'Basic SEO setup', '1 round of revisions', '2–3 weeks delivery', '1 month support after launch'],
     cta: 'Start with Starter',
   },
   {
@@ -244,7 +244,7 @@ export const pricing = [
     budget: 'Rs 100k – 250k',
     popular: true,
     text: 'A complete website built to win customers, with the features growing businesses need.',
-    features: ['Up to 12 pages', 'Custom design & animations', 'Blog or content you can edit', 'SEO + Google Analytics', 'Speed optimisation', '1 month of support after launch'],
+    features: ['Up to 12 pages', 'Custom design & animations', 'Blog or content you can edit', 'SEO + Google Analytics', 'Speed optimisation', '2 months support after launch'],
     cta: 'Choose Business',
   },
   {
@@ -252,7 +252,7 @@ export const pricing = [
     price: 'Rs 250k',
     budget: 'Rs 250k+',
     text: 'Online stores, web apps and systems tailored to how your business works.',
-    features: ['E-commerce or custom web app', 'Payments, bookings or dashboards', 'Integrations with your tools', 'Advanced SEO & performance', 'Priority support', 'Timeline planned with you'],
+    features: ['E-commerce or custom web app', 'Payments, bookings or dashboards', 'Integrations with your tools', 'Advanced SEO & performance', '4 months support after launch', 'Timeline planned with you'],
     cta: 'Choose Pro',
   },
 ]
