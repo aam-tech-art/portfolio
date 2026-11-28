@@ -77,6 +77,7 @@
 
   /* Sliding from -50% to 0 carries the strip left to right; its two copies make it seamless */
   @keyframes marquee { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+  @keyframes review-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
   @keyframes float { 50% { transform: translateY(-8px); } }
   @keyframes shimmer { to { background-position: 300% 0; } }
 }
