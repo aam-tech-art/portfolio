@@ -22,9 +22,9 @@ export default function Testimonials() {
     <section className="py-18 md:py-25" id="testimonials">
       <div className="wrap">
         <SectionHeader
-          eyebrow="Client stories"
-          title="What our clients say"
-          text="Businesses we've worked with, in their own words."
+          eyebrow="Google reviews"
+          title="What the reviews say"
+          text="Words shared on our Google Business Profile."
         />
         <a href={googleReviews.href} target="_blank" rel="noopener noreferrer" className="mx-auto mb-8 flex w-fit items-center gap-2 rounded-full border border-amber-400/40 bg-amber-50 px-4 py-2 text-[0.9rem] font-semibold text-foreground transition-colors hover:bg-amber-100">
           <StarIcon aria-hidden="true" className="size-4 fill-amber-500 text-amber-500" />

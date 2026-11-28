@@ -225,7 +225,22 @@ export const counters = [
 ]
 
 // Tools we build with, shown as chips under the counters
-export const techStack = ['React', 'JavaScript', 'Tailwind CSS', 'shadcn/ui', 'Vite', 'Node.js', 'GitHub']
+export const techStack = [
+  'React',
+  'JavaScript',
+  'Tailwind CSS',
+  'shadcn/ui',
+  'Vite',
+  'Node.js',
+  'GitHub',
+  'Next.js 16',
+  'TypeScript',
+  'Neon Postgres',
+  'Drizzle ORM',
+  'Auth.js',
+  'Zod',
+  'Playwright',
+]
 
 // Client logos (files in /public), e.g. { name: 'Bloom Café', logo: '/clients/bloom.svg' }.
 // The logo row stays hidden while this list is empty.
@@ -237,6 +252,24 @@ export const testimonials = [
   {
     quote: 'Great experience with AAM Technologies! A highly professional and talented team with excellent service and quality of work. Highly Recommended!',
     name: 'Syed Hammad Hassan',
+    role: 'Google review',
+    rating: 5,
+  },
+  {
+    quote: 'A truly impressive software company with a great vision and talented team. They provide modern and reliable software solutions with a strong focus on customer satisfaction. Their professionalism and dedication make them stand out in the market. It is great to see this startup growing so successfully. Wishing them more success and achievements in the future. Highly recommended!',
+    name: 'Muhammad Altaf',
+    role: 'Google review',
+    rating: 5,
+  },
+  {
+    quote: 'Great experience with AAM Tec! Professional team, quality software services, and excellent communication. Highly recommended!',
+    name: 'Abdullah Tariq',
+    role: 'Google review',
+    rating: 5,
+  },
+  {
+    quote: 'Great experience, nice people',
+    name: 'Muhammad Kabeer',
     role: 'Google review',
     rating: 5,
   },
