@@ -121,7 +121,7 @@ export const projects = [
     title: 'Dialwise',
     category: 'CRM platform',
     text: 'A cold-calling CRM that keeps leads, local calling hours, retries and follow-ups on track.',
-    tags: ['CRM', 'Call workflows', 'Next.js'],
+    tags: ['Next.js 16', 'TypeScript', 'Tailwind CSS 4', 'Neon Postgres'],
     gradient: 'linear-gradient(135deg, #071413, #0c2522)',
     visual: 'dialwise',
     link: 'https://dialwise-beta.vercel.app/demo',

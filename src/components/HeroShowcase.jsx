@@ -55,16 +55,30 @@ function MiniSite({ project, compact = false }) {
 }
 
 function DialwiseMiniSite({ compact = false }) {
-  const text = compact ? 'text-[0.43rem]' : 'text-[clamp(0.58rem,1.2vw,0.9rem)]'
+  if (compact) {
+    return (
+      <div className="h-full overflow-hidden bg-[#f5fffc] text-[#163832]">
+        <div className="flex h-[200%] flex-col gap-[3%] p-[7%] transition-transform duration-[1.2s] ease-[cubic-bezier(0.45,0,0.25,1)] *:flex-none group-hover/device:-translate-y-1/2 group-hover/device:duration-[4s] motion-reduce:transition-none">
+          <header className="flex h-[4%] items-center justify-between"><strong className="font-display text-[0.48rem] tracking-tight text-[#0f766e]">⌕ Dialwise</strong><i className="block h-1.5 w-5 rounded-full bg-[#d8eee9]" /></header>
+          <section className="flex h-[25%] flex-col justify-center rounded-md border border-[#b8e4db] bg-white p-[8%] shadow-[0_5px_16px_rgba(15,118,110,0.09)]"><span className="text-[0.37rem] font-bold tracking-[0.1em] text-[#0f766e] uppercase">Cold-calling CRM</span><strong className="mt-[8%] font-display text-[0.63rem] leading-[1.1]">Every call, at the right time.</strong><span className="mt-[10%] w-fit rounded-full bg-[#14b8a6] px-[8%] py-[4%] text-[0.36rem] font-bold text-white">Open →</span></section>
+          <section className="h-[25%] rounded-md border border-[#d8eee9] bg-white p-[7%]"><div className="mb-[9%] flex justify-between text-[0.42rem] font-bold"><span>Call queue</span><span className="text-[#0f766e]">View all</span></div>{['Ready now', 'Retry later', 'Follow-up'].map((item, index) => <div key={item} className="mb-[8%] flex items-center gap-[7%]"><i className={cn('block size-1.5 rounded-full', index === 0 ? 'bg-[#14b8a6]' : 'bg-[#cbe8e2]')} /><span className="text-[0.36rem] text-[#52736d]">{item}</span></div>)}</section>
+          <section className="grid h-[13%] grid-cols-2 gap-[6%]"><div className="rounded-md bg-[#e6f8f4] p-[10%]"><strong className="block text-[0.55rem]">12</strong><span className="text-[0.32rem] text-[#52736d]">Follow-ups</span></div><div className="rounded-md bg-[#e6f8f4] p-[10%]"><strong className="block text-[0.55rem]">70</strong><span className="text-[0.32rem] text-[#52736d]">Active leads</span></div></section>
+          <section className="flex h-[22%] flex-col justify-center rounded-md bg-[#0f766e] p-[8%] text-white"><span className="text-[0.34rem] font-bold tracking-[0.1em] text-[#a7f3e8] uppercase">Never miss a follow-up</span><strong className="mt-[7%] text-[0.53rem] leading-[1.25]">Retries and next steps stay organised.</strong></section>
+          <div className="h-[5%] rounded-md bg-[#d7f1eb]" />
+        </div>
+      </div>
+    )
+  }
+
   return (
-    <div className="h-full overflow-hidden bg-[#071413] text-[#e5f6f0]">
+    <div className="h-full overflow-hidden bg-[#f5fffc] text-[#163832]">
       <div className="flex h-[200%] flex-col gap-[3%] p-[5%] transition-transform duration-[1.2s] ease-[cubic-bezier(0.45,0,0.25,1)] *:flex-none group-hover/device:-translate-y-1/2 group-hover/device:duration-[4s] motion-reduce:transition-none">
-        <header className="flex h-[5%] items-center justify-between border-b border-white/10 pb-[2%]"><strong className={cn('font-display tracking-tight text-[#65decf]', text)}>⌕ Dialwise</strong><span className="rounded-full bg-[#155d52] px-[4%] py-[1%] text-[0.45em] font-bold tracking-wide">CRM</span></header>
-        <section className="flex h-[27%] flex-col justify-center rounded-lg border border-[#5de0cd]/20 bg-[#0d2926] p-[7%]"><span className="text-[0.62em] font-semibold tracking-[0.16em] text-[#70e8d8] uppercase">Cold-calling CRM</span><strong className={cn('mt-[5%] font-display leading-[0.95]', compact ? 'text-[0.7rem]' : 'text-[clamp(0.8rem,1.7vw,1.25rem)]')}>Call leads at the right time, every time.</strong><span className="mt-[7%] w-fit rounded-full bg-[#31d1bd] px-[7%] py-[3%] text-[0.55em] font-bold text-[#06312d]">Open workspace →</span></section>
-        <section className="h-[22%] rounded-lg border border-white/10 bg-white/[0.04] p-[5%]"><div className="mb-[7%] flex justify-between"><strong className={text}>Call queue</strong><span className="text-[0.6em] text-[#70e8d8]">View all</span></div>{['Ready for follow-up', 'Scheduled callback', 'New lead'].map((item, index) => <div key={item} className="mb-[4%] flex items-center gap-[4%]"><i className={cn('block size-[0.52rem] rounded-full', index === 0 ? 'bg-[#31d1bd]' : 'bg-white/25')} /><span className="text-[0.65em] text-white/75">{item}</span></div>)}</section>
-        <section className="grid h-[15%] grid-cols-3 gap-[4%]">{[['12', 'Follow-ups'], ['8', 'Calls'], ['70', 'Leads']].map(([value, label]) => <div key={label} className="rounded-md border border-white/10 bg-white/[0.04] p-[12%]"><strong className={cn('block', text)}>{value}</strong><span className="text-[0.46em] text-white/55">{label}</span></div>)}</section>
-        <section className="flex h-[20%] flex-col justify-center rounded-lg border border-white/10 bg-[#0d2926] p-[6%]"><span className="text-[0.58em] font-bold tracking-[0.12em] text-[#70e8d8] uppercase">Stay on track</span><strong className={cn('mt-[4%] leading-tight', text)}>Retries wait their gap and follow-ups never slip.</strong></section>
-        <footer className="h-[6%] rounded-md bg-[#31d1bd]" />
+        <header className="flex h-[5%] items-center justify-between border-b border-[#d8eee9] pb-[2%]"><strong className="font-display text-[clamp(0.58rem,1.2vw,0.9rem)] tracking-tight text-[#0f766e]">⌕ Dialwise</strong><span className="rounded-full bg-[#d7f1eb] px-[4%] py-[1%] text-[0.5rem] font-bold tracking-wide text-[#0f766e]">CRM</span></header>
+        <section className="flex h-[27%] flex-col justify-center rounded-lg border border-[#b8e4db] bg-white p-[7%] shadow-[0_8px_20px_rgba(15,118,110,0.08)]"><span className="text-[0.7rem] font-semibold tracking-[0.16em] text-[#0f766e] uppercase">Cold-calling CRM</span><strong className="mt-[5%] font-display text-[clamp(0.9rem,1.8vw,1.35rem)] leading-[0.98]">Call leads at the right time, every time.</strong><span className="mt-[7%] w-fit rounded-full bg-[#14b8a6] px-[7%] py-[3%] text-[0.62rem] font-bold text-white">Open workspace →</span></section>
+        <section className="h-[22%] rounded-lg border border-[#d8eee9] bg-white p-[5%]"><div className="mb-[7%] flex justify-between"><strong className="text-[clamp(0.6rem,1.2vw,0.9rem)]">Call queue</strong><span className="text-[0.65rem] font-semibold text-[#0f766e]">View all</span></div>{['Ready for follow-up', 'Scheduled callback', 'New lead'].map((item, index) => <div key={item} className="mb-[4%] flex items-center gap-[4%]"><i className={cn('block size-[0.52rem] rounded-full', index === 0 ? 'bg-[#14b8a6]' : 'bg-[#cbe8e2]')} /><span className="text-[0.68rem] text-[#52736d]">{item}</span></div>)}</section>
+        <section className="grid h-[15%] grid-cols-3 gap-[4%]">{[['12', 'Follow-ups'], ['8', 'Calls'], ['70', 'Leads']].map(([value, label]) => <div key={label} className="rounded-md bg-[#e6f8f4] p-[12%]"><strong className="block text-[clamp(0.65rem,1.3vw,1rem)]">{value}</strong><span className="text-[0.5rem] text-[#52736d]">{label}</span></div>)}</section>
+        <section className="flex h-[20%] flex-col justify-center rounded-lg bg-[#0f766e] p-[6%] text-white"><span className="text-[0.62rem] font-bold tracking-[0.12em] text-[#a7f3e8] uppercase">Stay on track</span><strong className="mt-[4%] text-[clamp(0.65rem,1.2vw,0.9rem)] leading-tight">Retries wait their gap and follow-ups never slip.</strong></section>
+        <footer className="h-[6%] rounded-md bg-[#d7f1eb]" />
       </div>
     </div>
   )
