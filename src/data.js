@@ -233,7 +233,7 @@ export const pricing = [
   {
     name: 'Starter',
     price: 'Rs 60k',
-    budget: 'Rs 30k – 100k',
+    budget: 'Rs 60k – 100k',
     text: 'A sharp one-page or small website to get your business online fast.',
     features: ['Up to 5 pages', 'Mobile-first, responsive design', 'Contact form + WhatsApp button', 'Basic SEO setup', '1 round of revisions', '2–3 weeks delivery', '1 month support after launch'],
     cta: 'Start with Starter',
