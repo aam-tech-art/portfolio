@@ -1,5 +1,6 @@
 import { projects } from '../data.js'
 import { cn } from '@/lib/utils'
+import ProjectVisual from './ProjectVisual.jsx'
 
 // Decorative visual beside the home headline: a laptop and a phone showing mini previews
 // of our project sites, with a few floating badges. Built in HTML/CSS so it stays sharp
@@ -54,17 +55,25 @@ function MiniSite({ project, compact = false }) {
   )
 }
 
+function DialwisePreview({ project }) {
+  return (
+    <div className="relative h-full overflow-hidden bg-[#071413]">
+      <ProjectVisual project={project} className="h-full w-full" />
+      <a href={project.link} target="_blank" rel="noopener noreferrer" className="absolute top-2 left-2 rounded-full border border-[#5de0cd]/40 bg-[#071413]/90 px-2 py-1 text-[0.48rem] font-bold tracking-[0.08em] text-[#8af4e5] uppercase transition-colors hover:bg-[#0e3933]">Live Dialwise demo ↗</a>
+    </div>
+  )
+}
+
 export default function HeroShowcase() {
   const [main, second] = projects
   return (
     <div
-      aria-hidden="true"
       className="relative aspect-[4/3] w-full justify-self-center sm:aspect-[5/4] sm:max-w-[520px] lg:max-w-[560px] lg:justify-self-end"
     >
       {/* Laptop: screen + base */}
       <div className="group/device absolute inset-[4%_0_10%_10%] sm:inset-[6%_2%_12%_17%]">
         <div className="absolute inset-[0_0_6%] overflow-hidden rounded-[14px_14px_4px_4px] border-[7px] border-pine-800 bg-card shadow-[0_30px_60px_-30px_rgba(5,31,32,0.55)] sm:border-[10px]">
-          <MiniSite project={main} />
+          {main.visual === 'dialwise' ? <DialwisePreview project={main} /> : <MiniSite project={main} />}
         </div>
         <div className="absolute -inset-x-[6%] bottom-0 h-[6%] rounded-[2px_2px_14px_14px] bg-linear-to-b from-primary to-pine-800" />
       </div>

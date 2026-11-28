@@ -3,6 +3,7 @@ import { projects } from '../data.js'
 import Reveal from './Reveal.jsx'
 import { liftCard, zoomOnHover } from '@/lib/card'
 import { cn } from '@/lib/utils'
+import ProjectVisual from './ProjectVisual.jsx'
 
 const isLive = (link) => /^https?:\/\//.test(link)
 const mono = "font-mono [font-family:ui-monospace,'SFMono-Regular',Consolas,monospace]"
@@ -31,8 +32,8 @@ export default function RecentProjects() {
             <Reveal key={p.title} index={i} className="flex max-md:w-[80%] max-md:flex-none max-md:snap-start max-md:transform-none! max-md:opacity-100!">
               <article className={cn(liftCard, 'w-full')}>
                 <div className="overflow-hidden">
-                  <div className={cn('relative grid aspect-[16/10] place-items-center', zoomOnHover)} style={{ background: p.gradient }}>
-                    <span className="font-display text-[clamp(1.3rem,2.2vw,1.7rem)] font-bold text-white [text-shadow:0_4px_20px_rgba(0,0,0,0.25)]">{p.title}</span>
+                  <div className={cn('relative aspect-[16/10]', zoomOnHover)}>
+                    <ProjectVisual project={p} className="h-full w-full" />
                     <span className={cn(mono, 'absolute top-3.5 left-3.5 rounded-full border border-white/35 bg-pine-900/55 px-2.5 py-[0.45rem] text-[0.66rem] leading-none font-semibold tracking-[0.08em] text-white uppercase')}>
                       {p.category}
                     </span>

@@ -1,5 +1,5 @@
 import { StarIcon } from 'lucide-react'
-import { testimonials, visible } from '../data.js'
+import { googleReviews, testimonials, visible } from '../data.js'
 import SectionHeader from './SectionHeader.jsx'
 import Reveal from './Reveal.jsx'
 import SampleTag from './SampleTag.jsx'
@@ -26,6 +26,10 @@ export default function Testimonials() {
           title="What our clients say"
           text="Businesses we've worked with, in their own words."
         />
+        <a href={googleReviews.href} target="_blank" rel="noopener noreferrer" className="mx-auto mb-8 flex w-fit items-center gap-2 rounded-full border border-amber-400/40 bg-amber-50 px-4 py-2 text-[0.9rem] font-semibold text-foreground transition-colors hover:bg-amber-100">
+          <StarIcon aria-hidden="true" className="size-4 fill-amber-500 text-amber-500" />
+          {googleReviews.rating} on Google · {googleReviews.count} reviews
+        </a>
         {/* Up to three per row, centred; a single review gets a wider card */}
         <div className="flex flex-wrap justify-center gap-6">
           {items.map((t, i) => (

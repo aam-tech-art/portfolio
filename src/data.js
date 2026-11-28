@@ -122,7 +122,8 @@ export const projects = [
     category: 'AI calling platform',
     text: 'A polished demo experience for a modern AI-powered calling platform.',
     tags: ['Web app', 'AI', 'Product demo'],
-    gradient: 'linear-gradient(135deg, #1d4ed8, #7c3aed)',
+    gradient: 'linear-gradient(135deg, #071413, #0c2522)',
+    visual: 'dialwise',
     link: 'https://dialwise-beta.vercel.app/demo',
   },
   {
@@ -240,6 +241,12 @@ export const testimonials = [
     rating: 5,
   },
 ]
+
+export const googleReviews = {
+  rating: '5.0',
+  count: 5,
+  href: 'https://www.google.com/maps/search/?api=1&query=AAM%20TECHNOLOGIES%200334%200926571',
+}
 
 // Pricing packages. `budget` must match one of the budget choices in the project form, so the
 // button opens the pop-up with that budget already selected.

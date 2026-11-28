@@ -4,6 +4,7 @@ import Reveal from './Reveal.jsx'
 import { Badge } from '@/components/ui/badge'
 import { liftCard, zoomOnHover } from '@/lib/card'
 import { cn } from '@/lib/utils'
+import ProjectVisual from './ProjectVisual.jsx'
 
 export default function Projects() {
   return (
@@ -19,14 +20,14 @@ export default function Projects() {
             <Reveal key={p.title} index={i % 2} className="flex">
               <article className={cn(liftCard, 'w-full')}>
                 <div className="overflow-hidden">
-                  <div className={cn('relative grid aspect-video place-items-center', zoomOnHover)} style={{ background: p.gradient }}>
+                  <div className={cn('relative aspect-video', zoomOnHover)}>
+                    <ProjectVisual project={p} className="h-full w-full" />
                     {/* Browser window dots */}
                     <div className="absolute top-3.5 left-4 flex gap-1.5">
                       <span className="size-2.5 rounded-full bg-white/60" />
                       <span className="size-2.5 rounded-full bg-white/60" />
                       <span className="size-2.5 rounded-full bg-white/60" />
                     </div>
-                    <span className="font-display text-[clamp(1.4rem,3vw,2rem)] font-bold text-white [text-shadow:0_4px_20px_rgba(0,0,0,0.25)]">{p.title}</span>
                   </div>
                 </div>
                 <div className="flex flex-1 flex-col p-7">
