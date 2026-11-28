@@ -232,7 +232,7 @@ export const testimonials = [
 export const pricing = [
   {
     name: 'Starter',
-    price: 'Rs 30k',
+    price: 'Rs 60k',
     budget: 'Rs 30k – 100k',
     text: 'A sharp one-page or small website to get your business online fast.',
     features: ['Up to 5 pages', 'Mobile-first, responsive design', 'Contact form + WhatsApp button', 'Basic SEO setup', '1 round of revisions', '2–3 weeks delivery'],
