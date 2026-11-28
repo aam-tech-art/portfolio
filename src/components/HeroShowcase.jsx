@@ -1,6 +1,5 @@
 import { projects } from '../data.js'
 import { cn } from '@/lib/utils'
-import ProjectVisual from './ProjectVisual.jsx'
 
 // Decorative visual beside the home headline: a laptop and a phone showing mini previews
 // of our project sites, with a few floating badges. Built in HTML/CSS so it stays sharp
@@ -55,11 +54,18 @@ function MiniSite({ project, compact = false }) {
   )
 }
 
-function DialwisePreview({ project }) {
+function DialwiseMiniSite({ compact = false }) {
+  const text = compact ? 'text-[0.43rem]' : 'text-[clamp(0.58rem,1.2vw,0.9rem)]'
   return (
-    <div className="relative h-full overflow-hidden bg-[#071413]">
-      <ProjectVisual project={project} className="h-full w-full" />
-      <a href={project.link} target="_blank" rel="noopener noreferrer" className="absolute top-2 left-2 rounded-full border border-[#5de0cd]/40 bg-[#071413]/90 px-2 py-1 text-[0.48rem] font-bold tracking-[0.08em] text-[#8af4e5] uppercase transition-colors hover:bg-[#0e3933]">Live Dialwise demo ↗</a>
+    <div className="h-full overflow-hidden bg-[#071413] text-[#e5f6f0]">
+      <div className="flex h-[200%] flex-col gap-[3%] p-[5%] transition-transform duration-[1.2s] ease-[cubic-bezier(0.45,0,0.25,1)] *:flex-none group-hover/device:-translate-y-1/2 group-hover/device:duration-[4s] motion-reduce:transition-none">
+        <header className="flex h-[5%] items-center justify-between border-b border-white/10 pb-[2%]"><strong className={cn('font-display tracking-tight text-[#65decf]', text)}>⌕ Dialwise</strong><span className="rounded-full bg-[#155d52] px-[4%] py-[1%] text-[0.45em] font-bold tracking-wide">CRM</span></header>
+        <section className="flex h-[27%] flex-col justify-center rounded-lg border border-[#5de0cd]/20 bg-[#0d2926] p-[7%]"><span className="text-[0.62em] font-semibold tracking-[0.16em] text-[#70e8d8] uppercase">Cold-calling CRM</span><strong className={cn('mt-[5%] font-display leading-[0.95]', compact ? 'text-[0.7rem]' : 'text-[clamp(0.8rem,1.7vw,1.25rem)]')}>Call leads at the right time, every time.</strong><span className="mt-[7%] w-fit rounded-full bg-[#31d1bd] px-[7%] py-[3%] text-[0.55em] font-bold text-[#06312d]">Open workspace →</span></section>
+        <section className="h-[22%] rounded-lg border border-white/10 bg-white/[0.04] p-[5%]"><div className="mb-[7%] flex justify-between"><strong className={text}>Call queue</strong><span className="text-[0.6em] text-[#70e8d8]">View all</span></div>{['Ready for follow-up', 'Scheduled callback', 'New lead'].map((item, index) => <div key={item} className="mb-[4%] flex items-center gap-[4%]"><i className={cn('block size-[0.52rem] rounded-full', index === 0 ? 'bg-[#31d1bd]' : 'bg-white/25')} /><span className="text-[0.65em] text-white/75">{item}</span></div>)}</section>
+        <section className="grid h-[15%] grid-cols-3 gap-[4%]">{[['12', 'Follow-ups'], ['8', 'Calls'], ['70', 'Leads']].map(([value, label]) => <div key={label} className="rounded-md border border-white/10 bg-white/[0.04] p-[12%]"><strong className={cn('block', text)}>{value}</strong><span className="text-[0.46em] text-white/55">{label}</span></div>)}</section>
+        <section className="flex h-[20%] flex-col justify-center rounded-lg border border-white/10 bg-[#0d2926] p-[6%]"><span className="text-[0.58em] font-bold tracking-[0.12em] text-[#70e8d8] uppercase">Stay on track</span><strong className={cn('mt-[4%] leading-tight', text)}>Retries wait their gap and follow-ups never slip.</strong></section>
+        <footer className="h-[6%] rounded-md bg-[#31d1bd]" />
+      </div>
     </div>
   )
 }
@@ -72,17 +78,17 @@ export default function HeroShowcase() {
     >
       {/* Laptop: screen + base */}
       <div className="group/device absolute inset-[4%_0_10%_10%] sm:inset-[6%_2%_12%_17%]">
-        <div className="absolute inset-[0_0_6%] overflow-hidden rounded-[14px_14px_4px_4px] border-[7px] border-pine-800 bg-card shadow-[0_30px_60px_-30px_rgba(5,31,32,0.55)] sm:border-[10px]">
-          {main.visual === 'dialwise' ? <DialwisePreview project={main} /> : <MiniSite project={main} />}
-        </div>
+        <a href={main.link} target="_blank" rel="noopener noreferrer" aria-label="Open the Dialwise CRM demo" className="absolute inset-[0_0_6%] overflow-hidden rounded-[14px_14px_4px_4px] border-[7px] border-pine-800 bg-card shadow-[0_30px_60px_-30px_rgba(5,31,32,0.55)] sm:border-[10px]">
+          {main.visual === 'dialwise' ? <DialwiseMiniSite /> : <MiniSite project={main} />}
+        </a>
         <div className="absolute -inset-x-[6%] bottom-0 h-[6%] rounded-[2px_2px_14px_14px] bg-linear-to-b from-primary to-pine-800" />
       </div>
 
       {/* Phone, floating gently in front of the laptop */}
       {second && (
-        <div className="group/device absolute bottom-0 left-0 aspect-[9/18] w-[22%] animate-float-slow overflow-hidden rounded-[14px] border-4 border-pine-800 bg-card shadow-[0_24px_40px_-20px_rgba(5,31,32,0.55)] sm:w-[27%] sm:rounded-[18px] sm:border-[6px] motion-reduce:animate-none">
-          <MiniSite project={second} compact />
-        </div>
+        <a href={main.link} target="_blank" rel="noopener noreferrer" aria-label="Open the Dialwise CRM demo" className="group/device absolute bottom-0 left-0 aspect-[9/18] w-[22%] animate-float-slow overflow-hidden rounded-[14px] border-4 border-pine-800 bg-card shadow-[0_24px_40px_-20px_rgba(5,31,32,0.55)] sm:w-[27%] sm:rounded-[18px] sm:border-[6px] motion-reduce:animate-none">
+          {main.visual === 'dialwise' ? <DialwiseMiniSite compact /> : <MiniSite project={second} compact />}
+        </a>
       )}
 
       {/* Floating badges (hidden on phones) */}

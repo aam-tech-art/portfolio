@@ -119,9 +119,9 @@ export const processSteps = [
 export const projects = [
   {
     title: 'Dialwise',
-    category: 'AI calling platform',
-    text: 'A polished demo experience for a modern AI-powered calling platform.',
-    tags: ['Web app', 'AI', 'Product demo'],
+    category: 'CRM platform',
+    text: 'A cold-calling CRM that keeps leads, local calling hours, retries and follow-ups on track.',
+    tags: ['CRM', 'Call workflows', 'Next.js'],
     gradient: 'linear-gradient(135deg, #071413, #0c2522)',
     visual: 'dialwise',
     link: 'https://dialwise-beta.vercel.app/demo',

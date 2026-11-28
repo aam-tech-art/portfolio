@@ -32,7 +32,7 @@ export default function RecentProjects() {
             <Reveal key={p.title} index={i} className="flex max-md:w-[80%] max-md:flex-none max-md:snap-start max-md:transform-none! max-md:opacity-100!">
               <article className={cn(liftCard, 'w-full')}>
                 <div className="overflow-hidden">
-                  <div className={cn('relative aspect-[16/10]', zoomOnHover)}>
+                  <a href={isLive(p.link) ? p.link : undefined} target={isLive(p.link) ? '_blank' : undefined} rel={isLive(p.link) ? 'noopener noreferrer' : undefined} className={cn('relative block aspect-[16/10]', zoomOnHover)}>
                     <ProjectVisual project={p} className="h-full w-full" />
                     <span className={cn(mono, 'absolute top-3.5 left-3.5 rounded-full border border-white/35 bg-pine-900/55 px-2.5 py-[0.45rem] text-[0.66rem] leading-none font-semibold tracking-[0.08em] text-white uppercase')}>
                       {p.category}
@@ -43,7 +43,7 @@ export default function RecentProjects() {
                         Sample project
                       </span>
                     )}
-                  </div>
+                  </a>
                 </div>
                 <div className="flex flex-1 flex-col p-6">
                   <p className={cn(mono, 'mb-1.5 text-[0.78rem] font-medium')}>{p.tags.join(' · ')}</p>

@@ -20,7 +20,7 @@ export default function Projects() {
             <Reveal key={p.title} index={i % 2} className="flex">
               <article className={cn(liftCard, 'w-full')}>
                 <div className="overflow-hidden">
-                  <div className={cn('relative aspect-video', zoomOnHover)}>
+                  <a href={/^https?:\/\//.test(p.link) ? p.link : undefined} target={/^https?:\/\//.test(p.link) ? '_blank' : undefined} rel={/^https?:\/\//.test(p.link) ? 'noopener noreferrer' : undefined} className={cn('relative block aspect-video', zoomOnHover)}>
                     <ProjectVisual project={p} className="h-full w-full" />
                     {/* Browser window dots */}
                     <div className="absolute top-3.5 left-4 flex gap-1.5">
@@ -28,7 +28,7 @@ export default function Projects() {
                       <span className="size-2.5 rounded-full bg-white/60" />
                       <span className="size-2.5 rounded-full bg-white/60" />
                     </div>
-                  </div>
+                  </a>
                 </div>
                 <div className="flex flex-1 flex-col p-7">
                   <p className="mb-1.5 text-[0.8rem] tracking-[0.1em] text-pine-600 uppercase">{p.category}</p>
